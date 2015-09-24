@@ -10,7 +10,7 @@ namespace Endzone.UmbracoSocialPluginAdapters.API
         [HttpGet]
         public object Get()
         {
-            return 5;
+            return 0;
         }
     }
 }
