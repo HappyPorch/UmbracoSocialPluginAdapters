@@ -1,5 +1,5 @@
 ﻿{
-    "dlls": ["src/Endzone.UmbracoSocialPluginAdapters/bin/Debug/Endzone.UmbracoSocialPluginAdapters.dll"],
+    "dlls": ["src/Endzone.UmbracoSocialPluginAdapters/bin/Debug/oAuthTwitterWrapper.dll", "src/Endzone.UmbracoSocialPluginAdapters/bin/Debug/Endzone.UmbracoSocialPluginAdapters.dll"],
     "packageXmlTemplate": "src/Endzone.UmbracoSocialPluginAdapters/Package.xml"
 }
 
