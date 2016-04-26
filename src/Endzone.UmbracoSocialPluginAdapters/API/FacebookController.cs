@@ -117,6 +117,7 @@ namespace Endzone.UmbracoSocialPluginAdapters.API
                     link,
                     content = message,
                     thumb = image,
+                    data.comments,
                     publishedDate = data.created_time //might need to change, original PHP date format: D, d M Y H:i:s O
                 });
             }

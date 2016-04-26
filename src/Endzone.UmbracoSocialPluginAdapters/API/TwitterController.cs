@@ -2,6 +2,9 @@
 using System.Web.Http;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.WebApi;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Endzone.UmbracoSocialPluginAdapters.API
 {
@@ -9,7 +12,7 @@ namespace Endzone.UmbracoSocialPluginAdapters.API
     public class TwitterController : UmbracoApiController
     {
         [HttpGet]
-        public object Get(string url, string q, string list_id, string screen_name, string include_rts, string exclude_replies, int count = 20)
+        public object Get(string url, string screen_name, string include_rts, string exclude_replies, string q = null, string list_id = null, int count = 20)
         {
             //var oauthAccessToken = ConfigurationManager.AppSettings[Constants.TwitterOAuthAccessToken];
             //var oauthAccessTokenSecret = ConfigurationManager.AppSettings[Constants.TwitterOAuthAccessTokenSecret];
@@ -29,24 +32,29 @@ namespace Endzone.UmbracoSocialPluginAdapters.API
             switch (url)
             {
                 case "timeline":
-                    searchSettings.SearchQuery = string.Format("statuses/user_timeline.json?screen_name={0}&amp;include_rts={1}&amp;exclude_replies={2}&amp;count={3}", screen_name, include_rts, exclude_replies);
+                    searchSettings.SearchQuery = $"statuses/user_timeline.json?screen_name={screen_name}&amp;include_rts={include_rts}&amp;exclude_replies={exclude_replies}&amp;count={count}";
                     break;
 
                 case "search":
-                    searchSettings.SearchQuery = string.Format("search/tweets.json?q={0}&amp;include_rts={1}&amp;count={3}", q, include_rts, count);
+                    searchSettings.SearchQuery = $"search/tweets.json?q={q}&amp;include_rts={include_rts}&amp;count={count}";
                     break;
 
                 case "list":
-                    searchSettings.SearchQuery = string.Format("lists/statuses.json?list_id={0}&amp;include_rts={1}&amp;count={3}", list_id, include_rts, count);
+                    searchSettings.SearchQuery = $"lists/statuses.json?list_id={list_id}&amp;include_rts={include_rts}&amp;count={count}";
                     break;
 
                 default:
-                    searchSettings.SearchQuery = string.Format("statuses/user_timeline.json?count={3}", count);
+                    searchSettings.SearchQuery = $"statuses/user_timeline.json?count={count}";
                     break;
             }
 
             var twit = new OAuthTwitterWrapper.OAuthTwitterWrapper(authSettings, timelineSettings, searchSettings);
-            return twit.GetSearch();
+            var json = twit.GetSearch();
+
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StringContent(json);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return response;
         }
     }
 }
