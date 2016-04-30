@@ -21,7 +21,22 @@
     <readme>
       <![CDATA[UmbracoSocialPluginAdapters adds Facebook and Twitter adapters for the <a href="http://www.designchemical.com/blog/index.php/premium-jquery-plugins/jquery-social-stream-plugin/">jQuery Social Stream Plugin</a> to your site!
     
-    Stay in touch via the <a href="https://github.com/EndzoneSoftware/UmbracoSocialPluginAdapters">UmbracoSocialPluginAdapters GitHub repository</a>!]]></readme>
+    Stay in touch via the <a href="https://github.com/EndzoneSoftware/UmbracoSocialPluginAdapters">UmbracoSocialPluginAdapters GitHub repository</a>
+	
+	The following appSettings need to be defined for the feeds to work:
+	- SocialPlugin_FacebookAppId
+    - SocialPlugin_FacebookAppSecret
+    - SocialPlugin_TwitterConsumerKey
+    - SocialPlugin_TwitterConsumerSecret
+	
+	It is also necesary to set the correct URLs in the feed configuration in JavaScript, e.g.:
+	<pre>	
+	twitter: {
+		id: 'some_handle',
+		url: '/umbraco/UmbracoSocialPluginAdapters/Twitter/Get'
+	},
+	</pre>
+	!]]></readme>
   </info>
   <DocumentTypes />
   <Templates />
