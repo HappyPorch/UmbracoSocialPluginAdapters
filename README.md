@@ -1,5 +1,6 @@
 UmbracoSocialPluginAdapters adds Facebook and Twitter adapters for the [jQuery Social Stream Plugin](http://www.designchemical.com/blog/index.php/premium-jquery-plugins/jquery-social-stream-plugin/) to your site!
     
+Released as an [Umbraco package](https://our.umbraco.org/projects/website-utilities/umbracosocialpluginadapters/).
 	
 The following appSettings need to be defined for the feeds to work:
 
