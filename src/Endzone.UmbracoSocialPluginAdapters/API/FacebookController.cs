@@ -37,8 +37,9 @@ namespace Endzone.UmbracoSocialPluginAdapters.API
 
             var authUrl = $"https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id={appId}&client_secret={appSecret}";
 
-            var accessToken = new WebClient().DownloadString(authUrl);
-            accessToken = accessToken.Substring(accessToken.IndexOf('=') + 1);
+            var accessTokenResponseJson = new WebClient().DownloadString(authUrl);
+            var accessTokenResponse = JObject.Parse(accessTokenResponseJson);
+            var accessToken = accessTokenResponse["access_token"];
 
             var pageUrl = $"https://graph.facebook.com/v2.3/{pageId}?key=value&access_token={accessToken}&fields=id,link,name";
 
