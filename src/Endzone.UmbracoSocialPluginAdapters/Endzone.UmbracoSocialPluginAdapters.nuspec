@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>UmbracoSocialPluginAdapters</id>
+    <version>1.0.0</version>
+    <authors>Happy Porch</authors>
+    <owners>Happy Porch</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>UmbracoSocialPluginAdapters adds Facebook and Twitter adapters for the jQuery Social Stream Plugin to your site!</description>
+    <releaseNotes>Added nuget package.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>Umbraco Jquery Social</tags>
+    <dependencies>
+      <dependency id="SampleDependency" version="1.0" />
+    </dependencies>
+  </metadata>
+</package>
